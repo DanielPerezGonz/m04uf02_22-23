@@ -4,11 +4,22 @@ class CountButton extends React.component{
 	
 	constructor(props){
 		super(props);
+		this.state = {
+			contador: 0
+		};
 	}
 
 	render(){
 		return(
-			<button onClick={() => alert("oli") }>Habla</button>
+			<div>
+				<p>{this.state.contador}</p>
+				<button type "button" onClick={() => {
+					this.setState({
+						contador: this.state.contador+1
+					});
+					} 
+				}>Cuenta</button>
+			</div>
 		);
 	}
 }
