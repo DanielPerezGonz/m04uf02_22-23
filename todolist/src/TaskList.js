@@ -1,34 +1,28 @@
 import React from 'react';
 import TaskItems from'./TaskItems';
+import List from '@mui/material/List';
 
 class Tasklist extend React.Component{
 	constructor (props){
 		super(props);
 
 		this.state = {
-			items: ["uno", "dos", "cuatro"]
+			items: this.props.list
 		};
 	}
 
-	itemList = () => {
-		let tasks = this.state.items.map(task => {
-			<TaskItem text={task} />
-		});
-
-		return tasks;
-	}
-
 	render(){
+		console.log("render");
 		const tasks = this.state.items.map(task => {
 			return (
-				<li>{task}</li>
+				<TaskItem text={task} />
 			);
 		});
 
 		return (
-			<ol>
+			<List>
 				{tasks}
-			</ol>
+			</List>
 		);
 	}
 }

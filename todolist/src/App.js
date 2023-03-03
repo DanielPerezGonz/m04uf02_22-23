@@ -1,29 +1,52 @@
+import React from 'react';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+
+
 import Title from './Title';
-import './App.css';
+import TaskForm from './TaskForm';
+import TaskList from './TaskList';
 
-function App() {
-  return (
-    <div className="App">
-      <main>
-		<Title />
+import './TODO.css';
 
-		<h1>Todo App</h1>
+class App extends React.Component {
+	constructor (props){
+		super(props);
 
-		<form>
-			<p><input type="text" naem="task" placeholder="Escribe una nueva tarea" /></p>
-			<p><button type="button">+</button></p>
-		</form>
-		
-		<ol>
-			<li>Comprar patatas<button type="button"></button></li>
-			<li>Aprobar Lenguaje de marcas<button type="button"></button></li>
-			<li>Aprender POO<button type="button"></button></li>
-		</ol>
+		this.state ={
+			tasklist: ["Listen 1", "Listen 2"]
+		};
+	}
+	addTask = (task) =>{
+		console.log(task);
 
-		<p>Tienes<strong>3</strong> tareas pendientes</p>
-	  </main>
-    </div>
-  );
+		this.state.tasklist.unshift(task);
+
+		this.setState({
+			tasklist: this.state.tasklist
+		});
+	}
+	render(){
+	  return (
+	    <Box
+		sx={{
+			display:'flex',
+			justifyContent:'center',
+			alignItems:'center',
+			height:'100%',
+			background:'linear-gradient(to right bottom, #260089, #95eeb2'
+		}}>
+	
+			<Paper elevation={3}>
+				<Title text="TODO App" />
+				<TaskForm onAddTask={this.addTask} />
+				<TaskList list={this.state.tasklist} />
+	
+				<p>you have <strong>{this.state.tasklist.lenght}</strong> pending tasks</p>
+			</Paper>
+		</Box>
+  		);
+	}
 }
 
 export default App;

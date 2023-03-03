@@ -1,13 +1,10 @@
-
-
-
 import React from 'react';
 
-class Title extends React.component{
+class Title extends React.Component{
 	
 	render(){
 		return (
-			<h1>Aplicaion de deberes</h1>
+			<h1>{this.props.text}</h1>
 		);
 	}
 
