@@ -14,15 +14,22 @@ class App extends React.Component {
 		super(props);
 
 		this.state ={
-			tasklist: ["Listen 1", "Listen 2"]
+			TaskList: ["Listen 1", "Listen 2"]
 		};
 	}
 	addTask = (task) =>{
 		console.log(task);
 
-		this.state.tasklist.unshift(task);
+		this.state.tasktist.unshift(task);
 
 		this.setState({
+			tasktist: this.state.tasklist
+		});
+	}
+	removeTask = (task_num) =>{
+		this.state.tasklist.splice(task_num,1);
+		
+		this.setTate({
 			tasklist: this.state.tasklist
 		});
 	}
@@ -37,12 +44,16 @@ class App extends React.Component {
 			background:'linear-gradient(to right bottom, #260089, #95eeb2'
 		}}>
 	
-			<Paper elevation={3}>
-				<Title text="TODO App" />
+			<Paper elevation={3}
+					sx={{
+						padding:'15px'
+					}}>
+				<Title text="TO-DO-App" id="title" />
+
 				<TaskForm onAddTask={this.addTask} />
-				<TaskList list={this.state.tasklist} />
+				<TaskList list={this.state.tasklist} onRemoveTask={this.removeTask} />
 	
-				<p>you have <strong>{this.state.tasklist.lenght}</strong> pending tasks</p>
+				<p>you have <strong>{this.state.tasklist.length}</strong> pending tasks</p>
 			</Paper>
 		</Box>
   		);

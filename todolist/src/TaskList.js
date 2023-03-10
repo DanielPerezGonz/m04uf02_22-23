@@ -1,8 +1,8 @@
 import React from 'react';
-import TaskItems from'./TaskItems';
+import TaskItem from'./TaskItem';
 import List from '@mui/material/List';
 
-class Tasklist extend React.Component{
+class TaskList extends React.Component{
 	constructor (props){
 		super(props);
 

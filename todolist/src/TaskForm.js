@@ -12,10 +12,10 @@ class TaskForm extends React.Component{
 	render(){
 		return(
 			<form>
-				<p><TextField id="outlained-basic" variant="outlained" type="text" value={this.state.task} onChange={event => {
+				<p><TextField id="outlined-basic" variant="outlined" type="text" value={this.state.task} onChange={event => {
 					console.log(event.target.value);
 					this.setState({
-						task.event.target.value
+						task: event.target.value
 					});
 
 				}} placeholder="Add your new todo"/>
